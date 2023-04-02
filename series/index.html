@@ -10,7 +10,7 @@
   
   <title>
     
-      yby&#39;s blog
+      Series | yby&#39;s blog
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -155,47 +155,71 @@
 </header>
 
     <div id="article-banner">
-  <h2>归档</h2>
-  <p class="post-date">Archives</p>
+  <h2>分类</h2>
+  <p class="post-date">Categories</p>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2023
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2023/04/02/testTypora/" class="archive-title">typora 测试文章</a>
-        <p class="archive-date">04-02</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/04/02/test2/" class="archive-title">test2</a>
-        <p class="archive-date">04-02</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/04/02/Redis%20%E9%80%9F%E9%80%9A/" class="archive-title">Redis 速通</a>
-        <p class="archive-date">04-02</p>
-      </div>
-    
+
+
+
+
+<main class="app-body">
+  <div id="category-cloud">
+      
+        <a class="category2" data-name="category-Redis">Redis</a>
+      
+        <a class="category1" data-name="category-MySQL">MySQL</a>
+      
   </div>
-</section>
+    
+  
+    <div class="category-list">
+      <h3 class="category-name" id="category-Redis">Redis</h3>
+      
+      
+        <ul class="category-preview">
+          <li>
+            <a href="/2023/04/02/Redis 速通/">Redis 速通</a>
+          </li>
+        </ul>
+      
+        <ul class="category-preview">
+          <li>
+            <a href="/2023/04/02/test2/">test2</a>
+          </li>
+        </ul>
+      
+    </div>
+  
+    <div class="category-list">
+      <h3 class="category-name" id="category-MySQL">MySQL</h3>
+      
+      
+        <ul class="category-preview">
+          <li>
+            <a href="/2023/04/02/testTypora/">typora 测试文章</a>
+          </li>
+        </ul>
+      
+    </div>
   
 </main>
 
 <script>
   (function () {
-    var url = 'https://by-yanxx.github.io/categories/MySQL/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+    var url = 'https://by-yanxx.github.io/series/index.html'
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
+
+    var category = location.hash.replace('#', '')
+    if (category) {
+      var categoryId = "#category-" + category;
+      $("html, body").animate({
+        scrollTop: $(categoryId).offset().top 
+      }, 400)
+    }
   })();
 </script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
