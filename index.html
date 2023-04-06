@@ -183,9 +183,9 @@
   
     <article class="article-card">
       <h2 class="article-head">
-        <a href="/2023/03/04/HTTPS%20%E5%8A%A0%E5%AF%86/">HTTPS 加密过程</a>
+        <a href="/2023/03/03/HTTPS%20%E9%80%9F%E8%A7%88/">HTTPS 速览</a>
       </h2>
-      <p class="article-date">2023年3月4日</p>
+      <p class="article-date">2023年3月3日</p>
       
         
   <a href="/tags#https" >
@@ -196,10 +196,109 @@
       <div class="article-summary">
         
           
+HTTPS 到目前为止没有任何漏洞，有问题也是客户端的问题。
 
+回顾为解决 HTTP&#x2F;1.1 的不安全，提出了 HTTPS：
+
+
+
+不安全
+HTTPS 解决策略
+
+
+
+明文传输不安全：内容不加密，会被窃听
+信息加密，公钥 + 私钥
+
+
+不去验证通信方的身份：第三方骗子冒充服务端
+ ...
         
       </div>
-      <a class="more" href="/2023/03/04/HTTPS%20%E5%8A%A0%E5%AF%86/">Read more</a>
+      <a class="more" href="/2023/03/03/HTTPS%20%E9%80%9F%E8%A7%88/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2023/03/01/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">网络模型</a>
+      </h2>
+      <p class="article-date">2023年3月1日</p>
+      
+        
+  <a href="/tags#计网基础" >
+    <span class="tag-code">计网基础</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          OSI 七层网络模型
+应用层：负责各种应用软件
+表示层：数据格式标识，基本的压缩加密功能
+会话层：控制不同软件之间的会话
+传输层：端到端的数据传输
+网络层：定义 IP 编址，定义路由功能
+数据链路层：定义数据的基本格式，包括如何传输、如何标识
+物理层：网线，比特流
+
+TCP&#x2F;IP  ...
+        
+      </div>
+      <a class="more" href="/2023/03/01/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2023/03/01/HTTP%20%E9%80%9F%E8%A7%88/">HTTP 速览</a>
+      </h2>
+      <p class="article-date">2023年3月1日</p>
+      
+        
+  <a href="/tags#http" >
+    <span class="tag-code">http</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          HTTP 概念
+超文本传输控制协议，是应用层的协议，是两点之间传输超文本数据的约定和规范
+基于 TCP（HTTP&#x2F;3 是基于 UDP）
+是双向协议
+目前主流使用的是 HTTP&#x2F;1.1
+
+状态码
+1xx：提示信息
+2xx：服务端成功处理客户端请求
+200 OK：一切正常
+2 ...
+        
+      </div>
+      <a class="more" href="/2023/03/01/HTTP%20%E9%80%9F%E8%A7%88/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2023/03/01/%E9%94%AE%E5%85%A5%20URL%20%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/">键入 URL 发生的事情</a>
+      </h2>
+      <p class="article-date">2023年3月1日</p>
+      
+        
+  <a href="/tags#计网基础" >
+    <span class="tag-code">计网基础</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          1. URL 解析根据 URL 格式进行解析，生成 HTTP 请求消息。
+2. DNS 查询DNS，也就是域名服务器。用于查询服务器域名对应的 IP 地址。
+
+浏览器搜索自身 DNS 缓存，如果有，则直接返回解析结果，否则查询操作系统的 DNS 缓存
+搜索操作系统的 DNS 缓存，如果有，则 ...
+        
+      </div>
+      <a class="more" href="/2023/03/01/%E9%94%AE%E5%85%A5%20URL%20%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/">Read more</a>
     </article>
   
     <article class="article-card">
@@ -329,100 +428,6 @@
         
       </div>
       <a class="more" href="/2022/11/29/Spring%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2022/11/29/SpringMVC%20%E9%80%9F%E8%A7%88/">SpringMVC 速览</a>
-      </h2>
-      <p class="article-date">2022年11月29日</p>
-      
-        
-  <a href="/tags#java" >
-    <span class="tag-code">java</span>
-  </a>
-
-  <a href="/tags#springmvc" >
-    <span class="tag-code">springmvc</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          SpringMVC什么是 SpringMVCMVC 是模型（Model）、视图（View）、控制器（Controller）的缩写，旨在将业务「逻辑、视图显示、数据」分离来组织代码。
-MVC 是众多设计模式中的一种，SpringMVC 是一款优秀的 MVC 框架。
-一般将业务分层：
-
-Serv ...
-        
-      </div>
-      <a class="more" href="/2022/11/29/SpringMVC%20%E9%80%9F%E8%A7%88/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2022/11/27/Spring%20%E5%9F%BA%E7%A1%80/">Spring 基础</a>
-      </h2>
-      <p class="article-date">2022年11月27日</p>
-      
-        
-  <a href="/tags#java" >
-    <span class="tag-code">java</span>
-  </a>
-
-  <a href="/tags#spring" >
-    <span class="tag-code">spring</span>
-  </a>
-
-  <a href="/tags#ioc" >
-    <span class="tag-code">ioc</span>
-  </a>
-
-  <a href="/tags#aop" >
-    <span class="tag-code">aop</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          Spring 基础Spring 包含哪些模块？4.x：
-
-5.x：
-
-
-Core Container：核心（基础）模块，提供 IOC 和依赖注入功能的支持，所有功能都依赖这个模块
-spring-core：基本的核心工具类
-spring-beans：bean 的创建、配置和管理等功能
-spri ...
-        
-      </div>
-      <a class="more" href="/2022/11/27/Spring%20%E5%9F%BA%E7%A1%80/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2022/10/05/Java%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">Java 常用方法</a>
-      </h2>
-      <p class="article-date">2022年10月5日</p>
-      
-        
-  <a href="/tags#java" >
-    <span class="tag-code">java</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          类型转换String 转 👉👉👉char[]1char[] chs = str.toCharArray();
-
-
-
-int1int i = Integer.parseInt(&quot;123&quot;);
-
-1int i = Integer.valueOf(&quot;123&qu ...
-        
-      </div>
-      <a class="more" href="/2022/10/05/Java%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">Read more</a>
     </article>
   
 

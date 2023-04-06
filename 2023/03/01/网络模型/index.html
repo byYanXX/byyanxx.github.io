@@ -10,7 +10,7 @@
   
   <title>
     
-      Vim 快捷键 | yby&#39;s blog
+      网络模型 | yby&#39;s blog
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -155,8 +155,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Vim 快捷键</h2>
-  <p class="post-date">2023-02-18</p>
+  <h2>网络模型</h2>
+  <p class="post-date">2023-03-01</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -164,81 +164,34 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Vim 模式：</p>
-<ul>
-<li><code>普通模式</code>：光标移动时所在的模式，按 &lt;ESC&gt; 即可转到该模式</li>
-<li><code>插入模式</code>：在普通模式下，按 <code>i</code>、<code>a</code> 或 <code>o</code> 之后，即可编写文本</li>
-<li><code>可视模式</code>：按下 <code>v</code>，有点像 Shift 多选，常配合 <code>y</code>、<code>p</code> 实现复制内容、粘贴内容</li>
-<li><code>替换模式</code>：按下 <code>R</code>，连续替换光标处的文本</li>
-<li><code>命令行模式</code>：在普通模式下，输入 <code>:</code> 即可转到该模式</li>
+    <section class="markdown-content"><h1 id="OSI-七层网络模型"><a href="#OSI-七层网络模型" class="headerlink" title="OSI 七层网络模型"></a>OSI 七层网络模型</h1><ul>
+<li>应用层：负责各种应用软件</li>
+<li>表示层：数据格式标识，基本的压缩加密功能</li>
+<li>会话层：控制不同软件之间的会话</li>
+<li>传输层：端到端的数据传输</li>
+<li>网络层：定义 IP 编址，定义路由功能</li>
+<li>数据链路层：定义数据的基本格式，包括如何传输、如何标识</li>
+<li>物理层：网线，比特流</li>
 </ul>
-<h1 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h1><p><mark>上移：<code>k</code></mark></p>
-<p><mark>下移：<code>j</code></mark></p>
-<p><mark>左移：<code>h</code> 或 <code>BS</code></mark></p>
-<p><mark>右移：<code>l</code> 或 <code>&lt;SPA&gt;</code></mark></p>
-<p><mark>移动到行首：<code>0</code></mark></p>
-<p><mark>移动到行尾：<code>$</code></mark></p>
-<p>向上翻页：<code>CTRL-B</code>，注意和 emacs 冲突</p>
-<p>向下翻页：<code>CTRL-F</code>，注意和 emacs 冲突</p>
-<blockquote>
-<p>关于光标的上、下、左、右、行首、行尾的移动，还是去使用 emacs 的快捷键，其他的可以参考 vim</p>
-</blockquote>
-<p><mark>右移 1 个单词：<code>w</code></mark>；向右移动 2 个单词：<code>2w</code>；向右移动 5 个单词：<code>5w</code></p>
-<p><mark>左移 1 个单词：<code>b</code></mark>；向左移动 2 个单词：<code>2b</code>；</p>
-<blockquote>
-<p>因为 mac 里的 option 不太好改键，导致很多关于 option(alt) 的快捷键只有特殊字符</p>
-</blockquote>
-<p>向右移动到第 2 个单词的末尾：<code>2e</code>；向右移动到第 5 个单词的末尾：<code>5e</code></p>
-<p><mark>移动到文件第一行：<code>gg</code></mark></p>
-<p><mark>移动到文件最后一行：<code>G</code></mark></p>
-<p>跳转到第 520 行：<code>520 G</code>，一般配合 <code>CTRL-G</code> 文件定位信息</p>
-<p>移动到与左（右）括号匹配的右（左）括号：<code>%</code></p>
-<h1 id="进入与退出"><a href="#进入与退出" class="headerlink" title="进入与退出"></a>进入与退出</h1><p><mark>无改动退出：&lt;ESC&gt; 后 <code>:q!</code> &lt;Enter&gt;</mark></p>
-<p><mark>保存退出：&lt;ESC&gt; 后 <code>:wq</code> &lt;Enter&gt;</mark></p>
-<h1 id="文本编辑"><a href="#文本编辑" class="headerlink" title="文本编辑"></a>文本编辑</h1><p><mark>删除一个字符：<code>x</code></mark></p>
-<p><mark>删除一个单词：<code>dw</code></mark>，从光标到下一个单词起始处，不包括第一个字符；<code>de</code>，包括单词后的空格都会删掉</p>
-<p>删除两个单词：<code>d2w</code></p>
-<p><mark>删除光标后：<code>d$</code></mark>，一行中光标之后的内容被删掉，包括光标处的字符</p>
-<p><mark>删除一整行：<code>dd</code></mark>，<code>dd O</code> 常放在一起操作</p>
-<p>删除两行：<code>2dd</code></p>
-<p><mark>添加：<code>i</code></mark>，在光标之前插入文本</p>
-<p><mark>添加：<code>a</code></mark>，在光标之后插入文本</p>
-<p><mark>添加：<code>A</code></mark>，在光标所在行之后添加文本</p>
-<p><mark>添加：<code>o</code></mark>，在光标所在行的下一行插入</p>
-<p><mark>添加：<code>O</code></mark>，在光标所在行的上一行插入</p>
-<p><mark>撤销：<code>u</code></mark>，撤销最后一次命令（向后回溯）</p>
-<p><mark>行恢复：<code>U</code></mark>，将整行恢复到原始状态</p>
-<p>撤销以前的撤销命令：<code>CTRL-R</code>（向前穿越）</p>
-<p><mark>复制：<code>y</code>，<code>yw</code> 复制一个单词</mark>，配合 <code>v</code> 进入视图模式配合光标移动实现文本复制</p>
-<p><mark>粘贴：<code>p</code></mark>，如果删除的是一行的一部分，则将删除内容置入光标之后；如果删除的是一整行，则将最后一次删除的内容置入光标的下一行</p>
-<p>替换一个字符：<code>r</code>，按下 r 后输入字符，即可替换光标处的字符</p>
-<p>替换多个字符：<code>R</code>，进入替换模式，可以理解为连续替换</p>
-<p>替换单词部分内容：<code>ce</code>，此时删除了单词的光标及其之后的部分，此时也进入到了插入模式</p>
-<p>替换整个单词：<code>cw</code>，光标所在的整个单词被删掉</p>
-<p>替换句子：<code>c$</code>，删掉一行的光标及其之后的部分</p>
-<p>替换一行中的所有指定文本：<code>:s/old/new/g</code>，将光标所在行中所有的 old 替换为 new</p>
-<p>替换指定两行中间的所有指定文本：<code>:#,#s/old/new/g</code>，比如，替换 10 行到 15 行及其中间的所有行中的 hello 为 bye，就可以写为 <code>:10,15s/hello/bye/g</code></p>
-<p>替换整个文件中的指定文本：<code>:%s/old/new/g</code></p>
-<p>找到整个文件中的指定文本，并询问是否修改：<code>:%s/old/new/gc</code></p>
-<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><p>查看光标所在位置及文件状态信息：<code>CTRL-G</code></p>
-<p>文件保存：<code>:w FILENAME</code>，将当前 vim 中正在编辑的文件保存到名为 FILENAME 的文件中</p>
-<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><p>查找文本：<code>/</code>，按下 <code>/</code> 时进入到命令行模式，直接输入要查找的内容即可，从上往下找</p>
-<p>​	向下查找：<code>n</code></p>
-<p>​	向上查找：<code>N</code></p>
-<p>逆向查找文本：<code>?</code>，同理，但是从下往上找，所以 n 和 N 也反过来了</p>
-<p>​	向下查找：<code>N</code></p>
-<p>​	向上查找：<code>n</code></p>
-<h1 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h1><p>临时执行 vim 之外的命令：<code>:!</code>，比如，我想临时查看当前目录的文件都有什么，可以写为 <code>:!ls</code></p>
-<h1 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h1><p>忘了快捷键怎么办：<code>:help w</code>、<code>:help insert-index</code></p>
-<p>自动补全：<code>&lt;TAB&gt;</code> 或 <code>CTRL-D</code></p>
+<h1 id="TCP-x2F-IP-四层网络模型"><a href="#TCP-x2F-IP-四层网络模型" class="headerlink" title="TCP&#x2F;IP 四层网络模型"></a>TCP&#x2F;IP 四层网络模型</h1><ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>网络接口层</li>
+</ul>
+<h2 id="应用层-报文-x2F-消息"><a href="#应用层-报文-x2F-消息" class="headerlink" title="应用层 | 报文&#x2F;消息"></a>应用层 | 报文&#x2F;消息</h2><p>应用层在操作系统中的用户态，其他层则是在内核态。<br>应用层主要是定义信息交换的格式，比如：HTTP、FTP、DNS、SMTP 等。</p>
+<h2 id="传输层-段"><a href="#传输层-段" class="headerlink" title="传输层 | 段"></a>传输层 | 段</h2><p>两个重要的协议：TCP（传输控制协议）、UDP（用户数据协议）。<br>如果数据包长度大于 MSS，则需要 TCP 分段。</p>
+<h2 id="网络层-包"><a href="#网络层-包" class="headerlink" title="网络层 | 包"></a>网络层 | 包</h2><p>最常用的就是 IP 协议。<br>如果 IP 报文长度大于 MTU，则需要分片。</p>
+<h2 id="网络接口层-帧"><a href="#网络接口层-帧" class="headerlink" title="网络接口层 | 帧"></a>网络接口层 | 帧</h2><p>加上 MAC 头部封装成帧，负责在以太网、WiFi 等底层网络上发送原始数据包。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/../pictures/image-20230406201607704.png" alt="image-20230406201607704"></p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#vim" >
-    <span class="tag-code">vim</span>
+  <a href="/tags#计网基础" >
+    <span class="tag-code">计网基础</span>
   </a>
 
       </div>
@@ -249,17 +202,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2023/01/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%BD%92%E7%BA%B3/">
+      <a class="nav-left" href="/2023/03/01/HTTP%20%E9%80%9F%E8%A7%88/">
         <span class="nav-arrow">← </span>
         
-          排序算法归纳
+          HTTP 速览
         
       </a>
     
     
-      <a class="nav-right" href="/2023/03/01/%E9%94%AE%E5%85%A5%20URL%20%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/">
+      <a class="nav-right" href="/2023/03/03/HTTPS%20%E9%80%9F%E8%A7%88/">
         
-          键入 URL 发生的事情
+          HTTPS 速览
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -292,7 +245,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%89%E6%A0%87"><span class="toc-nav-text">光标</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%BF%9B%E5%85%A5%E4%B8%8E%E9%80%80%E5%87%BA"><span class="toc-nav-text">进入与退出</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91"><span class="toc-nav-text">文本编辑</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-nav-text">文件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-nav-text">查找</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">外部命令</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%B8%AE%E5%8A%A9"><span class="toc-nav-text">帮助</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-nav-text">OSI 七层网络模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#TCP-x2F-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-nav-text">TCP&#x2F;IP 四层网络模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82-%E6%8A%A5%E6%96%87-x2F-%E6%B6%88%E6%81%AF"><span class="toc-nav-text">应用层 | 报文&#x2F;消息</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82-%E6%AE%B5"><span class="toc-nav-text">传输层 | 段</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82-%E5%8C%85"><span class="toc-nav-text">网络层 | 包</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%E5%B1%82-%E5%B8%A7"><span class="toc-nav-text">网络接口层 | 帧</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol>
     
   </div>
 </aside>
@@ -302,7 +255,7 @@
 
 <script>
   (function () {
-    var url = 'https://by-yanxx.github.io/2023/02/18/快捷键 Vim/';
+    var url = 'https://by-yanxx.github.io/2023/03/01/网络模型/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
