@@ -68,7 +68,7 @@
       
         <li class="list-item">
           
-            <a href="/" class="item-link">首页</a>
+            <a href="/" class="item-link active">首页</a>
           
         </li>
       
@@ -114,7 +114,7 @@
         
           <li class="menu-item">
             
-              <a href="/" class="menu-link">首页</a>
+              <a href="/" class="menu-link mobile-active">首页</a>
             
           </li>
         
@@ -154,98 +154,40 @@
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>归档</h2>
-  <p class="post-date">Archives</p>
+    <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2022/08/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a>
+      </h2>
+      <p class="article-date">2022年8月2日</p>
+      
+      <div class="article-summary">
+        
+          我的第一篇博客工作流学习：在本地 Typora 记录笔记
+博客：将想要发布的内容，拷贝到 ./source/_posts 文件中
+上传：在 MyHexo 文件下执行 hexo g -d 即可自动发布到 github
+一些注意的地方
+hexo 中无法使用 ==文本== 来高亮文本，需要使用标签 ...
+        
+      </div>
+      <a class="more" href="/2022/08/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">Read more</a>
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a href="/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a class="unvisible" href="/">Next <span class="page-arrow">→</span></a>
+  
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2023
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2023/04/01/Redis%20%E9%80%9F%E8%A7%88/" class="archive-title">Redis 速览</a>
-        <p class="archive-date">04-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/03/04/HTTPS%20%E5%8A%A0%E5%AF%86/" class="archive-title">HTTPS 加密过程</a>
-        <p class="archive-date">03-04</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/02/18/%E5%BF%AB%E6%8D%B7%E9%94%AE%20Vim/" class="archive-title">Vim 快捷键</a>
-        <p class="archive-date">02-18</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/01/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%BD%92%E7%BA%B3/" class="archive-title">排序算法归纳</a>
-        <p class="archive-date">01-12</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2022
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2022/12/01/SpringBoot%20%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/" class="archive-title">SpringBoot 自动装配</a>
-        <p class="archive-date">12-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2022/11/30/Spring%20%E4%BA%8B%E5%8A%A1/" class="archive-title">Spring 事务</a>
-        <p class="archive-date">11-30</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2022/11/29/SpringMVC%20%E9%80%9F%E8%A7%88/" class="archive-title">SpringMVC 速览</a>
-        <p class="archive-date">11-29</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2022/11/29/Spring%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-title">Spring 设计模式</a>
-        <p class="archive-date">11-29</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2022/11/27/Spring%20%E5%9F%BA%E7%A1%80/" class="archive-title">Spring 基础</a>
-        <p class="archive-date">11-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2022/10/05/Java%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-title">Java 常用方法</a>
-        <p class="archive-date">10-05</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2022/08/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-title">第一篇博客</a>
-        <p class="archive-date">08-02</p>
-      </div>
-    
-  </div>
-</section>
   
 </main>
 
-<script>
-  (function () {
-    var url = 'https://by-yanxx.github.io/archives/2022/10/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
-  })();
-</script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
