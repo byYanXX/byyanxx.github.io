@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Stay hungry. Stay foolish.">
+  <meta name="keyword" content="">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      SpringMVC 速览 | yby&#39;s blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>yby's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">分类</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">发现</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">分类</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">发现</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>SpringMVC 速览</h2>
+  <p class="post-date">2022-11-29</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><h2 id="什么是-SpringMVC"><a href="#什么是-SpringMVC" class="headerlink" title="什么是 SpringMVC"></a>什么是 SpringMVC</h2><p>MVC 是模型（Model）、视图（View）、控制器（Controller）的缩写，旨在将业务「逻辑、视图显示、数据」分离来组织代码。</p>
+<p><mark>MVC 是众多设计模式中的一种，SpringMVC 是一款优秀的 MVC 框架。</mark></p>
+<p>一般将业务分层：</p>
+<ul>
+<li><code>Service</code>：业务处理</li>
+<li><code>Dao</code>：数据库操作</li>
+<li><code>Entity</code>：实体类</li>
+<li><code>Controller</code>：控制层，将数据传递给前端</li>
+</ul>
+<h2 id="SpringMVC-核心组件"><a href="#SpringMVC-核心组件" class="headerlink" title="SpringMVC 核心组件"></a>SpringMVC 核心组件</h2><ul>
+<li><code>DispatcherServlet</code>：核心的中央处理器，负责请求、分发、响应客户端</li>
+<li><code>HandlerMapping</code>：处理器映射器，根据 uri 去匹配查找能处理的 Handler，将请求涉及到的拦截器和 Handler 一起封装</li>
+<li><code>HandlerAdapter</code>：处理器适配器，根据 HandlerMapping 找到 Handler，适配执行对应的 Handler</li>
+<li><code>Handler</code>：请求处理器，处理实际请求的处理器</li>
+<li><code>ViewResolver</code>：视图解析器，根据 Handler 返回的视图&#x2F;逻辑视图，解析并渲染后，传递给 <code>DispatcherServlet</code> 响应客户端</li>
+</ul>
+<h2 id="SpringMVC-工作原理"><a href="#SpringMVC-工作原理" class="headerlink" title="SpringMVC 工作原理"></a>SpringMVC 工作原理</h2><p><img src="/../pictures/image-20230405112646155.png" alt="image-20230405112646155"></p>
+<ol>
+<li>客户端发出请求，<code>DispatcherServlet</code> 拦截请求</li>
+<li><code>DispatcherServlet</code> 根据请求信息调用 <code>HandlerMapping</code>，<code>HandlerMapping</code> 根据 uri 去匹配查找能处理的 <code>Handler</code>，并将请求涉及到的拦截器和 <code>Handler</code> 一起封装</li>
+<li><code>DispatcherServlet</code> 调用 <code>HandlerAdapter</code> 适配执行 <code>Handler</code></li>
+<li><code>Handler</code> 处理客户端请求，返回一个 <code>ModelAndView</code> 对象（包含数据对象 Model 和逻辑视图 View）给 <code>DispatcherServlet</code></li>
+<li><code>ViewResovler</code> 根据逻辑视图查找实际的视图</li>
+<li><code>DispatcherServlet</code> 将返回的 <code>Model</code> 传给 <code>View</code></li>
+<li>最后将 <code>View</code> 返回给客户端</li>
+</ol>
+<h2 id="统一异常处理怎么实现？"><a href="#统一异常处理怎么实现？" class="headerlink" title="统一异常处理怎么实现？"></a>统一异常处理怎么实现？</h2><p>使用 <code>@ControllerAdvcie</code> + <code>@ExceptionHandler</code> 这两个注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GlobalExceptionHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler(BaseException.class)</span></span><br><span class="line">    <span class="keyword">public</span> ResponseEntity&lt;?&gt; handleAppException(BaseException ex, HttpServletRequest request) &#123;</span><br><span class="line">      <span class="comment">//......</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler(value = ResourceNotFoundException.class)</span></span><br><span class="line">    <span class="keyword">public</span> ResponseEntity&lt;ErrorReponse&gt; <span class="title function_">handleResourceNotFoundException</span><span class="params">(ResourceNotFoundException ex, HttpServletRequest request)</span> &#123;</span><br><span class="line">      <span class="comment">//......</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述操作，会给所有或者指定的 <code>Controller</code> 织入异常处理的逻辑（AOP），当 <code>Controller</code> 中的方法抛出异常的时候，由被<code>@ExceptionHandler</code> 注解修饰的方法进行处理。</p>
+<p>而异常具体被「哪个被 <code>@ExceptionHandler</code> 注解修饰的方法」处理异常，则是由 <code>ExceptionHandlerMethodResolver</code> 中 <code>getMappedMethod</code> 方法决定。</p>
+<p>源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="keyword">private</span> Method <span class="title function_">getMappedMethod</span><span class="params">(Class&lt;? extends Throwable&gt; exceptionType)</span> &#123;</span><br><span class="line">    List&lt;Class&lt;? <span class="keyword">extends</span> <span class="title class_">Throwable</span>&gt;&gt; matches = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">// 找到可以处理的所有异常信息。mappedMethods 中存放了异常和处理异常的方法的对应关系</span></span><br><span class="line">    <span class="keyword">for</span> (Class&lt;? <span class="keyword">extends</span> <span class="title class_">Throwable</span>&gt; mappedException : <span class="built_in">this</span>.mappedMethods.keySet()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mappedException.isAssignableFrom(exceptionType)) &#123;</span><br><span class="line">            matches.add(mappedException);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不为空说明有方法处理异常</span></span><br><span class="line">    <span class="keyword">if</span> (!matches.isEmpty()) &#123;</span><br><span class="line">        <span class="comment">// 按照匹配程度从小到大排序</span></span><br><span class="line">        matches.sort(<span class="keyword">new</span> <span class="title class_">ExceptionDepthComparator</span>(exceptionType));</span><br><span class="line">        <span class="comment">// 返回处理异常的方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.mappedMethods.get(matches.get(<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>getMappedMethod()</code>会首先找到可以匹配处理异常的所有方法信息，然后对其进行从小到大的排序，最后取最小的那一个匹配的方法(即匹配度最高的那个)。</p>
+</blockquote>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#java" >
+    <span class="tag-code">java</span>
+  </a>
+
+  <a href="/tags#springmvc" >
+    <span class="tag-code">springmvc</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2022/11/27/Spring%20%E5%9F%BA%E7%A1%80/">
+        <span class="nav-arrow">← </span>
+        
+          Spring 基础
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2022/11/29/Spring%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        
+          Spring 设计模式
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#SpringMVC"><span class="toc-nav-text">SpringMVC</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-SpringMVC"><span class="toc-nav-text">什么是 SpringMVC</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#SpringMVC-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="toc-nav-text">SpringMVC 核心组件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#SpringMVC-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-nav-text">SpringMVC 工作原理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-nav-text">统一异常处理怎么实现？</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://by-yanxx.github.io/2022/11/29/SpringMVC 速览/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    <p>Stay hungry. Stay foolish.</p>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>
