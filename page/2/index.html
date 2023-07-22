@@ -68,7 +68,7 @@
       
         <li class="list-item">
           
-            <a href="/" class="item-link">首页</a>
+            <a href="/" class="item-link active">首页</a>
           
         </li>
       
@@ -114,7 +114,7 @@
         
           <li class="menu-item">
             
-              <a href="/" class="menu-link">首页</a>
+              <a href="/" class="menu-link mobile-active">首页</a>
             
           </li>
         
@@ -154,103 +154,69 @@
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>归档</h2>
-  <p class="post-date">Archives</p>
+    <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2022/10/05/Java%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">Java 常用方法</a>
+      </h2>
+      <p class="article-date">2022年10月5日</p>
+      
+        
+  <a href="/tags#java" >
+    <span class="tag-code">java</span>
+  </a>
+
+  <a href="/tags#备忘" >
+    <span class="tag-code">备忘</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          类型转换String 转 👉👉👉char[]1char[] chs = str.toCharArray();
+
+
+
+int1int i = Integer.parseInt(&quot;123&quot;);
+
+1int i = Integer.valueOf(&quot;123&qu ...
+        
+      </div>
+      <a class="more" href="/2022/10/05/Java%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2022/08/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a>
+      </h2>
+      <p class="article-date">2022年8月2日</p>
+      
+      <div class="article-summary">
+        
+          我的第一篇博客工作流学习：在本地 Typora 记录笔记（图片统一默认保存在博客的路径下）
+图谱：知识图谱使用 obsidian 里的「白板」
+博客：将想要发布的内容，拷贝到 ./source/_posts 文件中
+上传：在 MyHexo 文件下执行 hexo g -d 即可自动发布到 gi ...
+        
+      </div>
+      <a class="more" href="/2022/08/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">Read more</a>
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a href="/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a class="unvisible" href="/">Next <span class="page-arrow">→</span></a>
+  
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2023
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2023/07/22/%E3%80%90%E5%85%AB%E8%82%A1%E3%80%91%E8%AE%A1%E7%BD%91%EF%BC%88%E6%9C%AA%E5%AE%8C%E7%BB%93%EF%BC%89/" class="archive-title">【八股】计网（未完结）</a>
-        <p class="archive-date">07-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/07/22/%E3%80%90%E5%85%AB%E8%82%A1%E3%80%91MySQl%EF%BC%88%E6%9C%AA%E5%AE%8C%E7%BB%93%EF%BC%89/" class="archive-title">【八股】MySQl（未完结）</a>
-        <p class="archive-date">07-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/07/09/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91Kubernetes/" class="archive-title">【学习笔记】Kubernetes 核心概念与架构</a>
-        <p class="archive-date">07-09</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/07/01/%E3%80%8C%E8%AE%B0%C2%B7%E4%B8%83%E6%9C%88%E4%B8%80%E4%BA%8E%E6%B7%B1%E5%9C%B3%E3%80%8D/" class="archive-title">「记·七月一于深圳」</a>
-        <p class="archive-date">07-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/06/15/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0/" class="archive-title">暑期实习总结</a>
-        <p class="archive-date">06-15</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/06/04/%E3%80%8C%E6%8A%98%E7%BA%A2%E8%8B%B1%C2%B7%E5%85%B0%E8%8A%B1%E6%9A%96%E3%80%8D/" class="archive-title">「折红英·兰花暖」</a>
-        <p class="archive-date">06-04</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/04/22/ChatGPT%20%E5%B9%B3%E6%9B%BF%EF%BC%9AClaude/" class="archive-title">ChatGPT 平替：Claude</a>
-        <p class="archive-date">04-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/02/18/%E5%BF%AB%E6%8D%B7%E9%94%AE%20Vim/" class="archive-title">Vim 快捷键</a>
-        <p class="archive-date">02-18</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/02/12/%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" class="archive-title">并发修改异常分析</a>
-        <p class="archive-date">02-12</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2023/01/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%BD%92%E7%BA%B3/" class="archive-title">排序算法归纳</a>
-        <p class="archive-date">01-12</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2022
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2022/10/05/Java%20%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-title">Java 常用方法</a>
-        <p class="archive-date">10-05</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2022/08/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-title">第一篇博客</a>
-        <p class="archive-date">08-02</p>
-      </div>
-    
-  </div>
-</section>
   
 </main>
 
-<script>
-  (function () {
-    var url = 'https://by-yanxx.github.io/tags/vim/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
-  })();
-</script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
