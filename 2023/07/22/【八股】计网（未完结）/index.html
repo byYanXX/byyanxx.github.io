@@ -164,7 +164,7 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6932001161532669960#heading-9">参考链接</a></p>
+    <section class="markdown-content"><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6932001161532669960#heading-9">参考来自这里</a></p>
 <h1 id="七层模型"><a href="#七层模型" class="headerlink" title="七层模型"></a>七层模型</h1><h3 id="1-OSI-七层模型介绍一下？"><a href="#1-OSI-七层模型介绍一下？" class="headerlink" title="1. OSI 七层模型介绍一下？"></a>1. OSI 七层模型介绍一下？</h3><p>OSI 七层模型是开放式通信系统互连参考模型，是一套网络互连标准框架。<br>分为七层，从上至下依次是应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。</p>
 <h3 id="2-OSI-七层模型中每层的作用？每层协议？"><a href="#2-OSI-七层模型中每层的作用？每层协议？" class="headerlink" title="2. OSI 七层模型中每层的作用？每层协议？"></a>2. OSI 七层模型中每层的作用？每层协议？</h3><ul>
 <li>应用层：定义了应用进程之间的交互规则，为不同的应用提供服务，主要有 DNS、HTTP、SMTP 等协议；&#96;&#96;</li>
@@ -325,13 +325,16 @@
 </ul>
 <p>具体流程如下：</p>
 <ul>
-<li>浏览器在首次发送请求后，服务端响应资源时会在 HTTP 报文**<code>头部加上 Cache-Control</code>**；</li>
-<li>当浏览器再次请求访问服务器中的该资源时，会先对比请求时间和过期时间，判断缓存资源**<code>是否过期</code>**：<ul>
+<li><p>浏览器在首次发送请求后，服务端响应资源时会在 HTTP 报文**<code>头部加上 Cache-Control</code>**；</p>
+</li>
+<li><p>当浏览器再次请求访问服务器中的该资源时，会先对比请求时间和过期时间，判断缓存资源**<code>是否过期</code>**：</p>
+<ul>
 <li>没过期，则强制使用缓存；</li>
 <li>否则重新发送请求，后续根据判断进行协商缓存或者重新响应。</li>
 </ul>
 </li>
-<li>服务端接收到请求后，**<code>更新</code>**头部（header）的 Cache-Control。</li>
+<li><p>服务端接收到请求后，**<code>更新</code>**头部（header）的 Cache-Control。</p>
+</li>
 </ul>
 <ol start="2">
 <li>【协商缓存】</li>
@@ -385,7 +388,19 @@
 </li>
 <li>浏览器如果收到 304 的响应状态码，则从本地缓存中加载资源，否则更新资源。</li>
 </ul>
-<h3 id="8-如何减少-HTTP-请求次数？"><a href="#8-如何减少-HTTP-请求次数？" class="headerlink" title="8. 如何减少 HTTP 请求次数？"></a>8. 如何减少 HTTP 请求次数？</h3><ul>
+<h3 id="8-HTTP-x2F-1-1-压缩技术？"><a href="#8-HTTP-x2F-1-1-压缩技术？" class="headerlink" title="8. HTTP&#x2F;1.1 压缩技术？"></a>8. HTTP&#x2F;1.1 压缩技术？</h3><p>通过对资源进行压缩，来减小响应数据的大小。</p>
+<ul>
+<li><code>无损压缩</code>：比如 gzip<ul>
+<li>去除代码里多余的符号</li>
+<li>生成二进制比特序列</li>
+</ul>
+</li>
+<li><code>有损压缩</code>：比如 png 图像压缩<ul>
+<li>牺牲资源质量，减小数据大小</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-如何减少-HTTP-请求次数？"><a href="#9-如何减少-HTTP-请求次数？" class="headerlink" title="9. 如何减少 HTTP 请求次数？"></a>9. 如何减少 HTTP 请求次数？</h3><ul>
 <li>**<code>减少重定向的请求次数</code>**：将重定向的工作交由代理服务器完成；</li>
 <li>**<code>请求合并</code>**：使用打包工具，将 js、css 等资源合并打包成大资源来代替多个小资源的请求；</li>
 <li>**<code>延迟发送</code>**：按需获取，用户暂时访问不到的资源，没必要发出请求</li>
@@ -445,20 +460,24 @@
 <li>数字证书（保证公钥安全可靠，以防第三方骗子冒充服务端）。</li>
 </ul>
 <p><img src="/../pictures/image-20230414210006144.png" alt="image-20230414210006144"></p>
-<h2 id="⌛️-其他"><a href="#⌛️-其他" class="headerlink" title="⌛️ 其他"></a>⌛️ 其他</h2><h3 id="URL-和-URI？"><a href="#URL-和-URI？" class="headerlink" title="URL 和 URI？"></a>URL 和 URI？</h3><p>URL 是 URI 的一个子集。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">问：</span><br><span class="line">为什么不直接使用数字签名，非要先用摘要算法呢？</span><br><span class="line"></span><br><span class="line">ChatGPT：</span><br><span class="line">使用数字签名时为什么要先使用摘要算法，而不直接对原始数据进行签名，是因为数字签名的计算复杂度通常比摘要算法高得多，而且签名的数据长度也比摘要算法产生的哈希值长得多。所以，通过先使用摘要算法对原始数据进行哈希运算，可以在签名过程中减少计算量和传输数据量，提高效率。</span><br><span class="line"></span><br><span class="line">以下是一些原因：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 减少计算量：</span><br><span class="line">使用数字签名时，对原始数据进行签名需要使用非对称加密算法，这通常包括较复杂的数学运算。而使用哈希算法计算数据的摘要相对来说更加简单和高效。所以，先对原始数据进行摘要计算，可以大大减少签名过程中的计算量，提高效率。</span><br><span class="line"></span><br><span class="line"><span class="bullet">2.</span> 减少传输数据量：</span><br><span class="line">数字签名的长度通常比摘要算法产生的哈希值长得多，特别是在使用较强的加密算法时。如果直接对原始数据进行签名，将会导致传输更多的数据量。而使用摘要算法，只需传输产生的摘要值，长度通常都是固定的，无论原始数据有多大，传输数据量都相对较小。</span><br><span class="line"></span><br><span class="line"><span class="bullet">3.</span> 保护私钥：</span><br><span class="line">在数字签名中，签名过程需要使用私钥，而私钥通常需要严格保护，不应频繁地用于签名大量数据。通过使用摘要算法，可以将签名的负担转移到较小的摘要数据上，而私钥仅用于对摘要进行签名，减少私钥的使用频率，有助于保护私钥的安全性。</span><br><span class="line"></span><br><span class="line">总结来说，先使用摘要算法计算数据的哈希值，然后再对哈希值进行数字签名，可以在保证数据的完整性和来源验证的前提下，提高计算效率、减少传输数据量，并有助于保护私钥的安全性。这样的组合使用是为了在实际应用中取得更好的性能和安全平衡。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="⌛️-其他"><a href="#⌛️-其他" class="headerlink" title="⌛️ 其他"></a>⌛️ 其他</h2><h3 id="URL-和-URI？"><a href="#URL-和-URI？" class="headerlink" title="URL 和 URI？"></a>URL 和 URI？</h3><p>URL 是 URI 的一个子集。简单地说，只要能唯一标识资源的就是 URI，在 URI 的基础上给出其资源的访问方式的就是 URL。</p>
 <p><img src="/../pictures/image-20230722110505647.png" alt="image-20230722110505647"></p>
 <h3 id="网页解析全过程？"><a href="#网页解析全过程？" class="headerlink" title="网页解析全过程？"></a>网页解析全过程？</h3><ol>
-<li><code>URL 解析</code></li>
+<li><strong><code>URL 解析</code></strong></li>
 </ol>
 <p>根据 URL 格式进行解析，确定 Web 服务器和文件名，生成 HTTP 请求消息。</p>
 <ol start="2">
-<li><code>DNS 查询</code></li>
+<li><strong><code>DNS 查询</code></strong></li>
 </ol>
 <p>操作系统将 HTTP 请求消息发送给 Web 服务器，再由 DNS（也就是域名服务器）查询服务器域名对应的 IP 地址。查询过程如下：</p>
 <ul>
 <li>浏览器搜索自身 DNS 缓存，如果有，则直接返回解析结果，否则查询操作系统的 DNS 缓存</li>
 <li>搜索操作系统的 DNS 缓存，如果有，则直接返回解析结果，否则查询本地 Host 文件</li>
-<li>读取本地 Host 文件，如果有，则直接返回解析结果，否则，否则</li>
+<li>读取本地 Host 文件，如果有，则直接返回解析结果，否则</li>
 <li>查询本地 DNS（递归查询）<ul>
 <li>如果域名包含在本地 DNS 中，返回解析结果给客户端</li>
 <li>如果域名不在本地 DNS 中，但服务器已缓存了 URL 与 IP 的映射关系，返回解析结果给客户端</li>
@@ -473,31 +492,52 @@
 </li>
 </ul>
 <ol start="3">
-<li><code>TCP 连接</code></li>
+<li><strong><code>TCP 连接</code></strong></li>
 </ol>
 <p>浏览器通过 DNS 获取到 Web 服务器真正的 IP 地址后，便向 Web 服务器发起 TCP 连接请求，三次握手，建立连接。</p>
 <ol start="4">
-<li><code>发送 HTTP 请求</code></li>
+<li><strong><code>发送 HTTP 请求</code></strong></li>
 </ol>
 <p>TCP 连接建立起来后，浏览器向服务端发送 HTTP 请求。</p>
 <ol start="5">
-<li><code>服务端处理请求并返回 HTTP 报文</code></li>
+<li><strong><code>服务端处理请求并返回 HTTP 报文</code></strong></li>
 </ol>
 <p>服务端接收到请求后，根据路径参数找到特定的请求处理器进行处理，将处理结果及相应视图返回给浏览器。<br>（如果使用的是 HTTPS，还需进行 TLS 握手，保证安全）</p>
 <ol start="6">
-<li><code>浏览器解析并渲染页面</code></li>
+<li><strong><code>浏览器解析并渲染页面</code></strong></li>
 </ol>
 <p>浏览器解析并渲染视图，若遇到 js 文件、css 文件等资源，则重复上述过程请求响应的资源。</p>
 <ol start="7">
-<li><code>断开连接</code></li>
+<li><strong><code>断开连接</code></strong></li>
 </ol>
 <p>四次挥手，断开连接。</p>
-<h3 id="HTTP-是不保存状态的协议，如何保存用户状态？"><a href="#HTTP-是不保存状态的协议，如何保存用户状态？" class="headerlink" title="HTTP 是不保存状态的协议，如何保存用户状态？"></a>HTTP 是不保存状态的协议，如何保存用户状态？</h3><h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1></section>
+<h3 id="HTTP-是不保存状态的协议，如何保存用户状态？"><a href="#HTTP-是不保存状态的协议，如何保存用户状态？" class="headerlink" title="HTTP 是不保存状态的协议，如何保存用户状态？"></a>HTTP 是不保存状态的协议，如何保存用户状态？</h3><h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><h3 id="1-三次握手"><a href="#1-三次握手" class="headerlink" title="1. 三次握手"></a>1. 三次握手</h3><ul>
+<li>握手之前：主动打开连接的客户端结束 Close 阶段，被动打开的服务器随之结束 Close 阶段并进入 Listen 阶段；</li>
+<li>第一次握手：客户端 —（SYN &#x3D; 1，Seq &#x3D; x）—&gt; 服务端；<ul>
+<li>标志位 SYN &#x3D;  1：表示请求连接；</li>
+<li>序号：Seq &#x3D; x，x 一般为 1；</li>
+<li>阶段变化：发送后，客户端进入 SYN-SEND 阶段。</li>
+</ul>
+</li>
+<li>第二次握手：服务端 —（SYN &#x3D; 1，ACK &#x3D; 1，Seq &#x3D; y，Ack &#x3D; x + 1）—&gt; 客户端；<ul>
+<li>标志位 SYN &#x3D; 1，ACK &#x3D; 1：表示客户端 Seq 序号有效，服务器能正常接收数据，并同意连接；</li>
+<li>序号：Seq &#x3D; y；</li>
+<li>确认号 Ack &#x3D; x + 1：将客户端的序号 +1 作为自己的确认号；</li>
+<li>阶段变化：接收后，服务端结束 Listen 阶段；发送后，服务端进入 SYN-RCVD 阶段。</li>
+</ul>
+</li>
+<li><h2 id="第三次握手：客户端-—（ACK-x3D-1，Seq-x3D-x-1，Ack-x3D-y-1）—-gt-服务端：-标志位-ACK-x3D-1：表示确认收到服务端同意连接的信号；-序号-Seq-x3D-x-1：表示收到服务端的确认号-Ack，并将其作为自己的序号值；"><a href="#第三次握手：客户端-—（ACK-x3D-1，Seq-x3D-x-1，Ack-x3D-y-1）—-gt-服务端：-标志位-ACK-x3D-1：表示确认收到服务端同意连接的信号；-序号-Seq-x3D-x-1：表示收到服务端的确认号-Ack，并将其作为自己的序号值；" class="headerlink" title="第三次握手：客户端 —（ACK &#x3D; 1，Seq &#x3D; x + 1，Ack &#x3D; y + 1）—&gt; 服务端：  - 标志位 ACK &#x3D; 1：表示确认收到服务端同意连接的信号；  - 序号 Seq &#x3D; x + 1：表示收到服务端的确认号 Ack，并将其作为自己的序号值；"></a>第三次握手：客户端 —（ACK &#x3D; 1，Seq &#x3D; x + 1，Ack &#x3D; y + 1）—&gt; 服务端：<br>  - 标志位 ACK &#x3D; 1：表示确认收到服务端同意连接的信号；<br>  - 序号 Seq &#x3D; x + 1：表示收到服务端的确认号 Ack，并将其作为自己的序号值；</h2></li>
+</ul>
+<h3 id="2-四次挥手"><a href="#2-四次挥手" class="headerlink" title="2. 四次挥手"></a>2. 四次挥手</h3></section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
+  <a href="/tags#八股" >
+    <span class="tag-code">八股</span>
+  </a>
+
   <a href="/tags#计网" >
     <span class="tag-code">计网</span>
   </a>
@@ -510,7 +550,7 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2023/07/09/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91Kubernetes/">
+      <a class="nav-left" href="/2023/07/09/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91Kubernetes%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%9E%B6%E6%9E%84%EF%BC%88%E6%9C%AA%E5%AE%8C%E7%BB%93%EF%BC%89/">
         <span class="nav-arrow">← </span>
         
           【学习笔记】Kubernetes 核心概念与架构
@@ -553,7 +593,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-nav-text">七层模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-OSI-%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%EF%BC%9F"><span class="toc-nav-text">1. OSI 七层模型介绍一下？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-OSI-%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%AF%8F%E5%B1%82%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F%E6%AF%8F%E5%B1%82%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-nav-text">2. OSI 七层模型中每层的作用？每层协议？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-TCP-x2F-IP-%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%92%8C%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B%EF%BC%9F"><span class="toc-nav-text">3. TCP&#x2F;IP 四层模型和五层模型？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E4%BC%A0%E8%BE%93%E7%9A%84%EF%BC%9F"><span class="toc-nav-text">4. 模型之间的数据是如何传输的？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8E%BB%E6%8E%89%E8%A1%A8%E7%A4%BA%E5%B1%82%E5%92%8C%E4%BC%9A%E8%AF%9D%E5%B1%82%EF%BC%9F"><span class="toc-nav-text">5. 为什么要去掉表示层和会话层？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-OSI-%E6%A8%A1%E5%9E%8B%E5%92%8C-TCP-x2F-IP-%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%BC%82%E5%90%8C%EF%BC%9F"><span class="toc-nav-text">6. OSI 模型和 TCP&#x2F;IP 模型之间的异同？</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-nav-text">应用层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTP"><span class="toc-nav-text">HTTP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-HTTP-%E5%A4%B4%E9%83%A8%E5%8C%85%E5%90%AB%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%EF%BC%9F"><span class="toc-nav-text">1. HTTP 头部包含哪些内容？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E2%8C%9B%EF%B8%8F-%E9%95%BF%E8%BF%9E%E6%8E%A5-keep-alive-%E5%92%8C%E7%9F%AD%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-nav-text">2. ⌛️ 长连接 keep-alive 和短连接的区别？使用场景？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93-HTTP-%E6%8A%A5%E6%96%87%E9%95%BF%E5%BA%A6%EF%BC%9F"><span class="toc-nav-text">3. 如何知道 HTTP 报文长度？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-nav-text">4. HTTP 请求方法有哪些？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-GET-%E5%92%8C-POST-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-text">5. GET 和 POST 区别？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-%E7%8A%B6%E6%80%81%E7%A0%81%EF%BC%9F"><span class="toc-nav-text">6. 状态码？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-HTTP-x2F-1-1-%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF%EF%BC%9F"><span class="toc-nav-text">7. HTTP&#x2F;1.1 缓存技术？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91-HTTP-%E8%AF%B7%E6%B1%82%E6%AC%A1%E6%95%B0%EF%BC%9F"><span class="toc-nav-text">8. 如何减少 HTTP 请求次数？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTP-%E5%90%84%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94"><span class="toc-nav-text">HTTP 各版本对比</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-HTTP-x2F-1-1-%E5%92%8C-HTTP-x2F-1-0-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-text">1. HTTP&#x2F;1.1 和 HTTP&#x2F;1.0 的区别？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-HTTP-x2F-1-X-%E5%92%8C-HTTP-x2F-2-0-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-text">2. HTTP&#x2F;1.X 和 HTTP&#x2F;2.0 的区别？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E2%8C%9B%EF%B8%8F-HTTP-x2F-3-%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="toc-nav-text">3. ⌛️ HTTP&#x2F;3 了解吗？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTPS"><span class="toc-nav-text">HTTPS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E2%8C%9B%EF%B8%8F-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-x2F-%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-nav-text">1. ⌛️ HTTPS 的工作流程&#x2F;建立连接的过程？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-HTTP-vs-HTTPS%EF%BC%9F"><span class="toc-nav-text">2. HTTP vs HTTPS？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%9FHTTPS-%E7%9A%84%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-nav-text">3. 有哪些加密方式？HTTPS 的加密方式？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-HTTPS-%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E7%9A%84%E7%AD%96%E7%95%A5%EF%BC%9F"><span class="toc-nav-text">4. HTTPS 实现安全传输的策略？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E2%8C%9B%EF%B8%8F-%E5%85%B6%E4%BB%96"><span class="toc-nav-text">⌛️ 其他</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#URL-%E5%92%8C-URI%EF%BC%9F"><span class="toc-nav-text">URL 和 URI？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E5%85%A8%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-nav-text">网页解析全过程？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP-%E6%98%AF%E4%B8%8D%E4%BF%9D%E5%AD%98%E7%8A%B6%E6%80%81%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E7%94%A8%E6%88%B7%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="toc-nav-text">HTTP 是不保存状态的协议，如何保存用户状态？</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-nav-text">传输层</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-nav-text">七层模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-OSI-%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%EF%BC%9F"><span class="toc-nav-text">1. OSI 七层模型介绍一下？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-OSI-%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%AF%8F%E5%B1%82%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F%E6%AF%8F%E5%B1%82%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-nav-text">2. OSI 七层模型中每层的作用？每层协议？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-TCP-x2F-IP-%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%92%8C%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B%EF%BC%9F"><span class="toc-nav-text">3. TCP&#x2F;IP 四层模型和五层模型？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E4%BC%A0%E8%BE%93%E7%9A%84%EF%BC%9F"><span class="toc-nav-text">4. 模型之间的数据是如何传输的？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8E%BB%E6%8E%89%E8%A1%A8%E7%A4%BA%E5%B1%82%E5%92%8C%E4%BC%9A%E8%AF%9D%E5%B1%82%EF%BC%9F"><span class="toc-nav-text">5. 为什么要去掉表示层和会话层？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-OSI-%E6%A8%A1%E5%9E%8B%E5%92%8C-TCP-x2F-IP-%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%BC%82%E5%90%8C%EF%BC%9F"><span class="toc-nav-text">6. OSI 模型和 TCP&#x2F;IP 模型之间的异同？</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-nav-text">应用层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTP"><span class="toc-nav-text">HTTP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-HTTP-%E5%A4%B4%E9%83%A8%E5%8C%85%E5%90%AB%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%EF%BC%9F"><span class="toc-nav-text">1. HTTP 头部包含哪些内容？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E2%8C%9B%EF%B8%8F-%E9%95%BF%E8%BF%9E%E6%8E%A5-keep-alive-%E5%92%8C%E7%9F%AD%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-nav-text">2. ⌛️ 长连接 keep-alive 和短连接的区别？使用场景？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93-HTTP-%E6%8A%A5%E6%96%87%E9%95%BF%E5%BA%A6%EF%BC%9F"><span class="toc-nav-text">3. 如何知道 HTTP 报文长度？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-nav-text">4. HTTP 请求方法有哪些？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-GET-%E5%92%8C-POST-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-text">5. GET 和 POST 区别？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-%E7%8A%B6%E6%80%81%E7%A0%81%EF%BC%9F"><span class="toc-nav-text">6. 状态码？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-HTTP-x2F-1-1-%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF%EF%BC%9F"><span class="toc-nav-text">7. HTTP&#x2F;1.1 缓存技术？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-HTTP-x2F-1-1-%E5%8E%8B%E7%BC%A9%E6%8A%80%E6%9C%AF%EF%BC%9F"><span class="toc-nav-text">8. HTTP&#x2F;1.1 压缩技术？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91-HTTP-%E8%AF%B7%E6%B1%82%E6%AC%A1%E6%95%B0%EF%BC%9F"><span class="toc-nav-text">9. 如何减少 HTTP 请求次数？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTP-%E5%90%84%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94"><span class="toc-nav-text">HTTP 各版本对比</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-HTTP-x2F-1-1-%E5%92%8C-HTTP-x2F-1-0-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-text">1. HTTP&#x2F;1.1 和 HTTP&#x2F;1.0 的区别？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-HTTP-x2F-1-X-%E5%92%8C-HTTP-x2F-2-0-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-text">2. HTTP&#x2F;1.X 和 HTTP&#x2F;2.0 的区别？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E2%8C%9B%EF%B8%8F-HTTP-x2F-3-%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="toc-nav-text">3. ⌛️ HTTP&#x2F;3 了解吗？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTPS"><span class="toc-nav-text">HTTPS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E2%8C%9B%EF%B8%8F-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-x2F-%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-nav-text">1. ⌛️ HTTPS 的工作流程&#x2F;建立连接的过程？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-HTTP-vs-HTTPS%EF%BC%9F"><span class="toc-nav-text">2. HTTP vs HTTPS？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%9FHTTPS-%E7%9A%84%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-nav-text">3. 有哪些加密方式？HTTPS 的加密方式？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-HTTPS-%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E7%9A%84%E7%AD%96%E7%95%A5%EF%BC%9F"><span class="toc-nav-text">4. HTTPS 实现安全传输的策略？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E2%8C%9B%EF%B8%8F-%E5%85%B6%E4%BB%96"><span class="toc-nav-text">⌛️ 其他</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#URL-%E5%92%8C-URI%EF%BC%9F"><span class="toc-nav-text">URL 和 URI？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E5%85%A8%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-nav-text">网页解析全过程？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP-%E6%98%AF%E4%B8%8D%E4%BF%9D%E5%AD%98%E7%8A%B6%E6%80%81%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BF%9D%E5%AD%98%E7%94%A8%E6%88%B7%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="toc-nav-text">HTTP 是不保存状态的协议，如何保存用户状态？</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-nav-text">传输层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-nav-text">1. 三次握手</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF-%E2%80%94%EF%BC%88ACK-x3D-1%EF%BC%8CSeq-x3D-x-1%EF%BC%8CAck-x3D-y-1%EF%BC%89%E2%80%94-gt-%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%9A-%E6%A0%87%E5%BF%97%E4%BD%8D-ACK-x3D-1%EF%BC%9A%E8%A1%A8%E7%A4%BA%E7%A1%AE%E8%AE%A4%E6%94%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%90%8C%E6%84%8F%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%BF%A1%E5%8F%B7%EF%BC%9B-%E5%BA%8F%E5%8F%B7-Seq-x3D-x-1%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%94%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%A1%AE%E8%AE%A4%E5%8F%B7-Ack%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%85%B6%E4%BD%9C%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%8F%E5%8F%B7%E5%80%BC%EF%BC%9B"><span class="toc-nav-text">第三次握手：客户端 —（ACK &#x3D; 1，Seq &#x3D; x + 1，Ack &#x3D; y + 1）—&gt; 服务端：  - 标志位 ACK &#x3D; 1：表示确认收到服务端同意连接的信号；  - 序号 Seq &#x3D; x + 1：表示收到服务端的确认号 Ack，并将其作为自己的序号值；</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-nav-text">2. 四次挥手</span></a></li></ol></li></ol></li></ol>
     
   </div>
 </aside>
