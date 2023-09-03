@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="二分查找1. 区间设定推荐左闭右开：[left, right)。 1234int left &#x3D; 0, right &#x3D; arr.length;while (left &lt; right) &amp;#123;    &#x2F;&#x2F; TODO&amp;#125;   问：这里为什么不能是 while (left &lt;&#x3D; right) ？答：因为左闭右开区间，反例：[1, 1)，既包含 1，又不包含 1，矛盾。  2. m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="➤ 算法 | ⭐️二分查找">
+<meta property="og:url" content="https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.html">
+<meta property="og:site_name" content="yby&#39;s blog">
+<meta property="og:description" content="二分查找1. 区间设定推荐左闭右开：[left, right)。 1234int left &#x3D; 0, right &#x3D; arr.length;while (left &lt; right) &amp;#123;    &#x2F;&#x2F; TODO&amp;#125;   问：这里为什么不能是 while (left &lt;&#x3D; right) ？答：因为左闭右开区间，反例：[1, 1)，既包含 1，又不包含 1，矛盾。  2. m">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://byyanxx.github.io/pictures/image-20230903161010786.png">
+<meta property="article:published_time" content="2023-09-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-03T15:07:00.955Z">
+<meta property="article:author" content="by_yanxx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://byyanxx.github.io/pictures/image-20230903161010786.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>➤ 算法 | ⭐️二分查找</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/07/01/%E9%9A%8F%E7%AC%94%20%7C%20%E4%B8%83%E6%9C%88%E4%B8%80%E4%BA%8E%E6%B7%B1%E5%9C%B3/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&text=➤ 算法 | ⭐️二分查找"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&is_video=false&description=➤ 算法 | ⭐️二分查找"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=➤ 算法 | ⭐️二分查找&body=Check out this article: https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&name=➤ 算法 | ⭐️二分查找&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&t=➤ 算法 | ⭐️二分查找"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">1.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8C%BA%E9%97%B4%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.</span> <span class="toc-text">1. 区间设定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mid-%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="toc-number">1.2.</span> <span class="toc-text">2. mid 值计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-if-%E4%B8%8E-return"><span class="toc-number">1.3.</span> <span class="toc-text">3. if 与 return</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F"><span class="toc-number">1.4.</span> <span class="toc-text">4. 特别注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">模板总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-x3D-x3D-tar"><span class="toc-number">2.1.</span> <span class="toc-text">1. &#x3D;&#x3D; tar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E2%89%A5-tar-%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">2. ≥ tar 的最小值的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E2%89%A4-tar-%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">3. ≤ tar 的最大值的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-gt-tar-%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text">4. &gt; tar 的最小值的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-lt-tar-%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.5.</span> <span class="toc-text">5. &lt; tar 的最大值的位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9B%E6%89%A3%E7%BB%83%E4%B9%A0"><span class="toc-number">3.</span> <span class="toc-text">力扣练习</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        ➤ 算法 | ⭐️二分查找
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">by_yanxx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-09-02T16:00:00.000Z" class="dt-published" itemprop="datePublished">2023-09-03</time>
+        
+        (Updated: <time datetime="2023-09-03T15:07:00.955Z" class="dt-updated" itemprop="dateModified">2023-09-03</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h3 id="1-区间设定"><a href="#1-区间设定" class="headerlink" title="1. 区间设定"></a>1. 区间设定</h3><p>推荐左闭右开：<code>[left, right)</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = arr.length;</span><br><span class="line"><span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>问：这里为什么不能是 <code>while (left &lt;= right)</code> ？<br>答：因为左闭右开区间，反例：[1, 1)，既包含 1，又不包含 1，矛盾。</p>
+</blockquote>
+<h3 id="2-mid-值计算"><a href="#2-mid-值计算" class="headerlink" title="2. mid 值计算"></a>2. mid 值计算</h3><p>推荐：<code>left + (right - left) / 2</code> 或 <code>int mid = left + ((right - left) &gt;&gt; 1)</code>，可以防止 <code>left + right</code> 越界。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">		<span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">		System.out.println((left + right) / <span class="number">2</span>); <span class="comment">// 打印：-1073741823</span></span><br><span class="line">		System.out.println((left + right) &gt;&gt; <span class="number">1</span>); <span class="comment">// 打印：-1073741823</span></span><br><span class="line">		System.out.println(left + (right - left) / <span class="number">2</span>); <span class="comment">// 打印：1073741825</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-if-与-return"><a href="#3-if-与-return" class="headerlink" title="3. if 与 return"></a>3. if 与 return</h3><p>一般来说分三种情况：</p>
+<ul>
+<li><p><code>tar &lt; arr[mid]</code>：左移右指针，<code>right = mid</code>；</p>
+</li>
+<li><p><code>arr[mid] &lt; tar</code>：右移左指针，<code>left = mid + 1</code>；</p>
+</li>
+<li><p><code>arr[mid] == tar</code>：根据不同情况，做不同处理：</p>
+<ul>
+<li>&#x3D;&#x3D; tar：<code>return mid</code>，如果没有找到 tar，则最后返回 -1；</li>
+<li>≥ tar 的最小值：左移右指针，<code>right = mid</code>，<code>return left</code>；</li>
+<li>&lt; tar 的最大值：左移右指针，<code>right = mid</code>，<code>return left - 1</code>；</li>
+<li>≤ tar 的最大值：右移左指针，<code>left = mid + 1</code>，<code>return left - 1</code>；</li>
+<li>&gt; tar 的最小值：右移左指针，<code>left = mid + 1</code>，<code>return left</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-特别注意"><a href="#4-特别注意" class="headerlink" title="4. 特别注意"></a>4. 特别注意</h3><ul>
+<li>在返回对应值时，注意 <code>left</code> 或 <code>left - 1</code> 是在 [0, arr.length) 区间的；</li>
+<li>有时 arr 里不存在 tar 值，需要根据题意特殊判断一下，比如 <code>if(arr[left] != tar) &#123;...&#125;</code>。</li>
+</ul>
+<h2 id="模板总结"><a href="#模板总结" class="headerlink" title="模板总结"></a>模板总结</h2><p><img src="/../pictures/image-20230903161010786.png" alt="image-20230903161010786"></p>
+<p>等值情况下，很好判断，比较难记的是边界，这里给出总结，便于记忆：</p>
+<blockquote>
+<p>arr[mid] &#x3D;&#x3D; tar 时的指针移动：</p>
+<ul>
+<li>目标是图中左侧橙色、红色的值，则 right &#x3D; mid；</li>
+<li>目标是图中右侧绿色、黄色的值，则 left &#x3D; mid + 1。</li>
+</ul>
+<p>return 值：</p>
+<ul>
+<li>目标是图中红色、黄色的值，则 return left；</li>
+<li>目标是图中橙色、绿色的值，则 return left - 1。</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">right &#x3D; mid</th>
+<th align="center">left &#x3D; mid + 1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">return left</td>
+<td align="center">红</td>
+<td align="center">黄</td>
+</tr>
+<tr>
+<td align="center">return left - 1</td>
+<td align="center">橙</td>
+<td align="center">绿</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>特别地，在寻找 ≥ tar 的最小值的位置时，如果 tar 不存在于数组中，那么返回的是 tar 要插入的位置，这个位置可能是 -1，也可能是 arr.length。</p>
+</blockquote>
+<h3 id="1-x3D-x3D-tar"><a href="#1-x3D-x3D-tar" class="headerlink" title="1. &#x3D;&#x3D; tar"></a>1. &#x3D;&#x3D; tar</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">		<span class="type">int</span> <span class="variable">tar</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">	    System.out.println(binarySearch(arr, tar)); <span class="comment">// 4</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> tar)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = arr.length;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (arr[mid] == tar) &#123;</span><br><span class="line">				<span class="keyword">return</span> mid; <span class="comment">// ❗️mid 即为所求</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; tar) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (tar &lt; arr[mid]) &#123;</span><br><span class="line">				right = mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// ❗️不存在 tar，返回 -1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-≥-tar-的最小值的位置"><a href="#2-≥-tar-的最小值的位置" class="headerlink" title="2. ≥ tar 的最小值的位置"></a>2. ≥ tar 的最小值的位置</h3><p>翻译：tar 第一次出现的位置；tar 左边界；……</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">		<span class="type">int</span> <span class="variable">tar</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">	    System.out.println(binarySearch(arr, tar)); <span class="comment">// 2</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> tar)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = arr.length;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (arr[mid] == tar) &#123;</span><br><span class="line">				right = mid; <span class="comment">// ❗️</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; tar) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (tar &lt; arr[mid]) &#123;</span><br><span class="line">				right = mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">// 里不存在 tar</span></span><br><span class="line">        <span class="keyword">if</span> (left &lt; <span class="number">0</span> || left &gt;= arr.length) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">        <span class="keyword">if</span> (tar != arr[left]) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> left; <span class="comment">// ❗️</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-≤-tar-的最大值的位置"><a href="#3-≤-tar-的最大值的位置" class="headerlink" title="3. ≤ tar 的最大值的位置"></a>3. ≤ tar 的最大值的位置</h3><p>翻译：tar 最后一次出现的位置；tar 右边界；……</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">		<span class="type">int</span> <span class="variable">tar</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">	    System.out.println(binarySearch(arr, tar)); <span class="comment">// 5</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> tar)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = arr.length;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (arr[mid] == tar) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>; <span class="comment">// ❗️</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; tar) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (tar &lt; arr[mid]) &#123;</span><br><span class="line">				right = mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">// 里不存在 tar</span></span><br><span class="line">        <span class="keyword">if</span> (left - <span class="number">1</span> &lt; <span class="number">0</span> || left - <span class="number">1</span> &gt;= arr.length) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">        <span class="keyword">if</span> (tar != arr[left - <span class="number">1</span>]) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> left - <span class="number">1</span>; <span class="comment">// ❗️</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-gt-tar-的最小值的位置"><a href="#4-gt-tar-的最小值的位置" class="headerlink" title="4. &gt; tar 的最小值的位置"></a>4. &gt; tar 的最小值的位置</h3><p>翻译：tar 最后一次出现的位置的下一个位置；&gt; tar 的第一个位置；……</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">		<span class="type">int</span> <span class="variable">tar</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">	    System.out.println(binarySearch(arr, tar)); <span class="comment">// 6</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> tar)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = arr.length;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (arr[mid] == tar) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>; <span class="comment">// ❗️</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; tar) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (tar &lt; arr[mid]) &#123;</span><br><span class="line">				right = mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> left; <span class="comment">// ❗️</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-lt-tar-的最大值的位置"><a href="#5-lt-tar-的最大值的位置" class="headerlink" title="5. &lt; tar 的最大值的位置"></a>5. &lt; tar 的最大值的位置</h3><p>翻译：tar 第一次出现的位置的前一个位置；&lt; tar 的最后一个位置；……</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">		<span class="type">int</span> <span class="variable">tar</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">	    System.out.println(binarySearch(arr, tar)); <span class="comment">// 2</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> tar)</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = arr.length;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (arr[mid] == tar) &#123;</span><br><span class="line">				right = mid; <span class="comment">// ❗️</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; tar) &#123;</span><br><span class="line">				left = mid + <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (tar &lt; arr[mid]) &#123;</span><br><span class="line">				right = mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> left - <span class="number">1</span>; <span class="comment">// ❗️</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="力扣练习"><a href="#力扣练习" class="headerlink" title="力扣练习"></a>力扣练习</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-insert-position/">35. 搜索插入位置</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-a-2d-matrix/">74. 搜索二维矩阵</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/">34. 在排序数组中查找元素的第一个和最后一个位置</a> (此题特别经典！)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-in-rotated-sorted-array/">33. 搜索旋转排序数组</a>（常考！）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/">153. 寻找旋转排序数组中的最小值</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/median-of-two-sorted-arrays/">4. 寻找两个正序数组的中位数</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">1.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8C%BA%E9%97%B4%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.</span> <span class="toc-text">1. 区间设定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mid-%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="toc-number">1.2.</span> <span class="toc-text">2. mid 值计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-if-%E4%B8%8E-return"><span class="toc-number">1.3.</span> <span class="toc-text">3. if 与 return</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F"><span class="toc-number">1.4.</span> <span class="toc-text">4. 特别注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">模板总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-x3D-x3D-tar"><span class="toc-number">2.1.</span> <span class="toc-text">1. &#x3D;&#x3D; tar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E2%89%A5-tar-%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">2. ≥ tar 的最小值的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E2%89%A4-tar-%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">3. ≤ tar 的最大值的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-gt-tar-%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text">4. &gt; tar 的最小值的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-lt-tar-%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.5.</span> <span class="toc-text">5. &lt; tar 的最大值的位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9B%E6%89%A3%E7%BB%83%E4%B9%A0"><span class="toc-number">3.</span> <span class="toc-text">力扣练习</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&text=➤ 算法 | ⭐️二分查找"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&is_video=false&description=➤ 算法 | ⭐️二分查找"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=➤ 算法 | ⭐️二分查找&body=Check out this article: https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&title=➤ 算法 | ⭐️二分查找"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&name=➤ 算法 | ⭐️二分查找&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://byyanxx.github.io/2023/09/03/%E7%AE%97%E6%B3%95%20|%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/&t=➤ 算法 | ⭐️二分查找"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2023
+    by_yanxx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
